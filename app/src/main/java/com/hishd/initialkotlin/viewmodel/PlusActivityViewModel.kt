@@ -2,8 +2,7 @@ package com.hishd.initialkotlin.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class PlusActivityViewModel: ViewModel() {
-    private var sum = 0
+class PlusActivityViewModel(private var sum: Int): ViewModel() {
 
     fun getCurrentSum() : Int {
         return this.sum
