@@ -1,15 +1,18 @@
 package com.hishd.initialkotlin.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CountActivityViewModel: ViewModel() {
-    private var count = 0
+class CountActivityViewModel(initialCount: Int): ViewModel() {
+    private var count = MutableLiveData<Int>()
+    val totalCount: LiveData<Int> get() = count
 
-    fun getCurrentCount() : Int {
-        return this.count
+    init {
+        this.count.value = initialCount
     }
 
-    fun getUpdatedCount() : Int {
-        return  ++this.count
+    fun getUpdatedCount() {
+        this.count.value = this.count.value?.plus(1)
     }
 }
