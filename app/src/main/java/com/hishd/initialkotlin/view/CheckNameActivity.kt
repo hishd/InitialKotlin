@@ -14,8 +14,12 @@ class CheckNameActivity : AppCompatActivity() {
     private val binding: ActivityCheckNameBinding by lazy {
         ActivityCheckNameBinding.inflate(layoutInflater)
     }
-    private lateinit var viewModel: CheckNameActivityViewModel
-    private lateinit var viewModelFactory: CheckNameActivityViewModelFactory
+    private val viewModel: CheckNameActivityViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[CheckNameActivityViewModel::class.java]
+    }
+    private val viewModelFactory: CheckNameActivityViewModelFactory by lazy {
+        CheckNameActivityViewModelFactory(names = this.names)
+    }
 
     private val names: List<String> by lazy {
         listOf("Imasha", "Hishara", "Nimesh", "Madola", "Ashan", "Tiny")
@@ -29,7 +33,10 @@ class CheckNameActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        viewModelFactory = CheckNameActivityViewModelFactory(names = this.names)
-        viewModel = ViewModelProvider(this, viewModelFactory)[CheckNameActivityViewModel::class.java]
+//        viewModelFactory = CheckNameActivityViewModelFactory(names = this.names)
+//        viewModel = ViewModelProvider(this, viewModelFactory)[CheckNameActivityViewModel::class.java]
+
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
     }
 }

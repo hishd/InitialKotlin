@@ -14,16 +14,17 @@
         android:theme="@style/Theme.InitialKotlin"
         tools:targetApi="31">
         <activity
-            android:name=".CheckNameActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.PlusActivity"
+            android:name=".view.CheckNameActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.PlusActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".view.CountActivity"

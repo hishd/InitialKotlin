@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class CheckNameActivityViewModel(private val names: List<String>): ViewModel() {
     val input = MutableLiveData<String>()
-    private val nameExist = MutableLiveData(false)
+//    private val nameExist = MutableLiveData(false)
     val result = MutableLiveData<String>()
 
     fun checkExist() {
