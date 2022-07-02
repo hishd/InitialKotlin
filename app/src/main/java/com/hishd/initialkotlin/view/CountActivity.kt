@@ -1,5 +1,6 @@
 package com.hishd.initialkotlin.view
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -21,14 +22,17 @@ class CountActivity : AppCompatActivity() {
         viewModelFactory = CountActivityViewModelFactory(initialCount = 10)
         viewModel = ViewModelProvider(this, viewModelFactory)[CountActivityViewModel::class.java]
 
-        viewModel.totalCount.observe(this) {
-            binding.lblCount.text = it.toString()
-        }
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-        binding.apply {
-            btnCountIncrement.setOnClickListener{
-                viewModel.getUpdatedCount()
-            }
-        }
+//        viewModel.totalCount.observe(this) {
+//            binding.lblCount.text = it.toString()
+//        }
+
+//        binding.apply {
+//            btnCountIncrement.setOnClickListener{
+//                viewModel.getUpdatedCount()
+//            }
+//        }
     }
 }

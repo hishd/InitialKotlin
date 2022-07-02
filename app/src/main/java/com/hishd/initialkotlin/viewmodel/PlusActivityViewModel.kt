@@ -9,11 +9,16 @@ class PlusActivityViewModel(sum: Int) : ViewModel() {
     private var sum = MutableLiveData<Int>()
     val totalSum: LiveData<Int> get() = sum
 
+    //Tow way binding variable
+    val input = MutableLiveData<String>()
+
     init {
         this.sum.value = sum
     }
 
-    fun getCalculatedSum(amount: Int) {
-        this.sum.value = this.sum.value?.plus(amount)
+    fun getCalculatedSum() {
+        input.value?.let {
+            sum.value = sum.value?.plus(it.toInt())
+        }
     }
 }

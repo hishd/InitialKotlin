@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.hishd.initialkotlin.viewmodel.CountActivityViewModel" />
     </data>
 
     <RelativeLayout
@@ -13,6 +15,7 @@
         tools:context=".view.CountActivity">
 
         <TextView
+            android:text="@{String.valueOf(viewModel.totalCount)}"
             android:id="@+id/lblCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,6 +23,7 @@
             android:textSize="36sp" />
 
         <Button
+            android:onClick="@{() -> viewModel.getUpdatedCount()}"
             android:id="@+id/btnCountIncrement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

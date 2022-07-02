@@ -21,14 +21,17 @@ class PlusActivity : AppCompatActivity() {
         viewModelFactory = PlusActivityViewModelFactory(sum = 100)
         viewModel = ViewModelProvider(this, viewModelFactory)[PlusActivityViewModel::class.java]
 
-        viewModel.totalSum.observe(this) {
-            binding.lblSum.text = it.toString()
-        }
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-        binding.apply {
-            btnAdd.setOnClickListener {
-                viewModel.getCalculatedSum(txtAmount.text.toString().toInt())
-            }
-        }
+//        viewModel.totalSum.observe(this) {
+//            binding.lblSum.text = it.toString()
+//        }
+//
+//        binding.apply {
+//            btnAdd.setOnClickListener {
+//                viewModel.getCalculatedSum(txtAmount.text.toString().toInt())
+//            }
+//        }
     }
 }
